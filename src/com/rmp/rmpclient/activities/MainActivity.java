@@ -31,7 +31,7 @@ public class MainActivity extends ListActivity {
 	private ProgressDialog pDialog;
 
 	// URL to get contacts JSON
-	private static String url = "http://rmpserver.herokuapp.com/api/politicians";
+	private static final String SERVER_URL = "http://rmpserver.herokuapp.com/api/politicians";
 
 	// JSON Node names
 	private static final String TAG_POLITICIANS = "politicians";
@@ -40,8 +40,8 @@ public class MainActivity extends ListActivity {
 	private static final String TAG_LAST_NAME = "lastname";
 	private static final String TAG_PARTY = "party";
 	private static final String TAG_IMAGE = "image";
-	// private static final String TAG_CONSTITUENCY = "constituency";
-	// private static final String TAG_URL = "url";
+	private static final String TAG_CONSTITUENCY = "constituency";
+	private static final String TAG_URL = "url";
 	// private static final String TAG_PHONE_MOBILE = "mobile";
 	// private static final String TAG_PHONE_HOME = "home";
 	// private static final String TAG_PHONE_OFFICE = "office";
@@ -111,33 +111,28 @@ public class MainActivity extends ListActivity {
 
 		@Override
 		protected Void doInBackground(Void... arg0) {
-			// Creating service handler class instance
 			ServiceHandler sh = new ServiceHandler();
 
 			// Making a request to url and getting response
-			String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
-			Log.d(SHANE_TAG, "jsonStr: " + jsonStr);
-
-			Log.d("Response: ", "> " + jsonStr);
+			String jsonStr = sh.makeServiceCall(SERVER_URL, ServiceHandler.GET);
+			
+			Log.d(getString(R.string.APP_TAG), "jsonStr: " + jsonStr);
 
 			if (jsonStr != null) {
 				try {
-					// JSONObject jsonObj = new JSONObject(jsonStr);
-
-					// Getting JSON Array node
-					JSONArray politicians = new JSONArray(jsonStr);// =
-																	// jsonObj.getJSONArray("");
-					Log.d(SHANE_TAG, "SHANE: Polititcians Length: "
-							+ politicians.length());
-					// looping through All Contacts
+					
+					JSONArray politicians = new JSONArray(jsonStr);
+					Log.d(SHANE_TAG, "SHANE: Polititcians Length: " + politicians.length());
+					
 					for (int i = 0; i < politicians.length(); i++) {
 						JSONObject c = politicians.getJSONObject(i);
 
-						// String id = c.getString(TAG_ID);
 						String firstName = c.getString(TAG_FIRST_NAME);
-						Log.d(SHANE_TAG, "YAAAAAY firstName: " + firstName);
 						String lastName = c.getString(TAG_LAST_NAME);
 						String party = c.getString(TAG_PARTY);
+						String constituency = c.getString(TAG_CONSTITUENCY);
+						String url = c.getString(TAG_URL);
+						
 						// String constituency = c.getString(TAG_CONSTITUENCY);
 						// String url = c.getString(TAG_URL);
 

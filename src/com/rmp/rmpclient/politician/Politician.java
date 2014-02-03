@@ -10,13 +10,24 @@ public class Politician {
 	private String lastName;
 	private String constituency;
 	private String party;
+	private String url;
 
-	public Politician(String id, String firstName, String lastName, String constituency, String party){
-		this.setId(id);
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
-		this.setConstituency(constituency);
-		this.setParty(party);
+	public Politician(String id, String firstName, String lastName, String constituency, String party, String url){
+		this.url = url;
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName=lastName;
+		this.constituency = constituency;
+		this.party = party;
+	}
+	
+	/**
+	 * Gets the politician's url
+	 * 
+	 * @return the URL
+	 */
+	public String getUrl(){
+		return url;
 	}
 
 	/**
@@ -29,30 +40,12 @@ public class Politician {
 	}
 
 	/**
-	 * Sets the politician's party
-	 * 
-	 * @param party
-	 */
-	public void setParty(String party) {
-		this.party = party;
-	}
-
-	/**
 	 * Gets the politician's constituency
 	 * 
 	 * @return the constituency
 	 */
 	public String getConstituency() {
 		return constituency;
-	}
-
-	/**
-	 * Sets the politician's constituency
-	 * 
-	 * @param constituency
-	 */
-	public void setConstituency(String constituency) {
-		this.constituency = constituency;
 	}
 
 	/**
@@ -65,15 +58,6 @@ public class Politician {
 	}
 
 	/**
-	 * Sets the politician's last name
-	 * 
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
@@ -81,24 +65,10 @@ public class Politician {
 	}
 
 	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
 	 * @return the id
 	 */
 	public String getId() {
 		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
 	}
 
 }
