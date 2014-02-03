@@ -49,5 +49,14 @@
         android:text="Party: "
         android:textColor="#5d5d5d"
         android:textStyle="bold" />
+    
+    <TextView 
+        android:id="@+id/id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/image"
+        android:layout_below="@id/party"
+        android:paddingBottom="2dip"
+        android:textColor="#acacac"/>
 
 </RelativeLayout>

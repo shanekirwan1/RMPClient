@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:orientation="vertical"
   android:padding="10dp">
-  <!-- firstname Label -->
-  <TextView android:id="@+id/firstname_label"
-            android:layout_width="fill_parent"
+  
+    <!-- image label -->
+  
+  <ImageView
+        android:id="@+id/image_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/shatter_alan"
+        android:layout_alignParentLeft="true"      
+	 />
+  
+    <!-- lastname Label -->
+    <TextView android:id="@+id/lastname_label"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25dip"
+            android:layout_below="@id/image_label"
+            android:paddingTop="10dip"
+            android:textStyle="bold"
+            />
+  
+  	<!-- firstname Label -->
+  	<TextView android:id="@+id/firstname_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lastname_label"
             android:textStyle="bold"
             android:paddingTop="10dip"
             android:paddingBottom="10dip"
-            android:textColor="#43bd00"/>
-  <!-- lastname Label -->
-  <TextView android:id="@+id/lastname_label"
+            android:textColor="#43bd00"
+             />           
+
+  <!-- party Label --> 
+  <TextView android:id="@+id/party_label"
+      		android:layout_width="wrap_content"
+      		android:layout_height="wrap_content"
+      		android:layout_below="@id/firstname_label"
+      		android:paddingTop="10dip"
+			/>
+  
+   <!-- ratings button --> 
+	<TextView android:id="@+id/rating_label"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#acacac"/>
-  <!-- party Label -->
-  <TextView android:id="@+id/party_label"
-      		android:layout_width="fill_parent"
-      		android:layout_height="wrap_content"
-      		android:textStyle="bold"/>
-</LinearLayout>
+            android:layout_toRightOf="@id/image_label"
+            android:textStyle="bold"
+            android:paddingTop="10dip"
+            android:paddingBottom="10dip"
+            android:paddingLeft="10dip"
+            android:textColor="#43bd00"
+            android:textSize="15sp"
+            android:text="RATINGS_HERE"
+             />     
+  
+</RelativeLayout>
