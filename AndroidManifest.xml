@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="18" />
     
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,14 +19,13 @@
             android:name="com.rmp.rmpclient.jsonparsing.MainActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
         <!-- Single List Item Activity -->
         <activity
-            android:label="Politician"
+            android:label="Contact"
             android:name="com.rmp.rmpclient.jsonparsing.SinglePoliticianActivity" >
         </activity>
     </application>
