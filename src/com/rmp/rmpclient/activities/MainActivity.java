@@ -28,12 +28,13 @@ import com.rmp.rmpclient.politician.Politician;
 
 public class MainActivity extends ListActivity {
 
+	/** progress dialog for startup */
 	private ProgressDialog pDialog;
 
-	// URL to get contacts JSON
+	/** the url of the server to point towards */
 	private static final String SERVER_URL = "http://rmpserver.herokuapp.com/api/politicians";
 
-	// JSON Node names
+	/** tags to retrieve json objects */
 	private static final String TAG_ID = "id";
 	private static final String TAG_FIRST_NAME = "firstname";
 	private static final String TAG_LAST_NAME = "lastname";
@@ -41,7 +42,7 @@ public class MainActivity extends ListActivity {
 	private static final String TAG_CONSTITUENCY = "constituency";
 	private static final String TAG_URL = "url";
 
-	// Hashmap for ListView
+	/** list to populate the view */
 	ArrayList<HashMap<String, String>> politicianDisplayList;
 	
 	/**
@@ -63,6 +64,7 @@ public class MainActivity extends ListActivity {
 			@Override
 			public void onItemClick(final AdapterView<?> parent, final View view,
 					final int position, final long id) {
+				
 				// getting values from selected ListItem
 				final String polID = ((TextView) view.findViewById(R.id.id)).getText().toString();
 				Log.d(getString(R.string.APP_TAG), "Politician ID is : " + polID);
@@ -77,7 +79,6 @@ public class MainActivity extends ListActivity {
 			}
 		});
 
-		// Calling async task to get json
 		new GetContacts().execute();
 	}
 
@@ -94,7 +95,6 @@ public class MainActivity extends ListActivity {
 			pDialog.setMessage("Please wait...");
 			pDialog.setCancelable(false);
 			pDialog.show();
-
 		}
 
 		@Override

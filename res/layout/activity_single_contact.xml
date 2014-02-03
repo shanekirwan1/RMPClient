@@ -31,8 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/lastname_label"
             android:textStyle="bold"
-            android:paddingTop="10dip"
-            android:paddingBottom="10dip"
+            android:paddingTop="2dip"
             android:textColor="#43bd00"
              />           
 
@@ -41,7 +40,8 @@
       		android:layout_width="wrap_content"
       		android:layout_height="wrap_content"
       		android:layout_below="@id/firstname_label"
-      		android:paddingTop="10dip"
+      		android:paddingTop="5dip"
+        	android:textColor="#acacac"
 			/>
   
    <!-- ratings button --> 
@@ -55,7 +55,7 @@
             android:paddingLeft="10dip"
             android:textColor="#43bd00"
             android:textSize="15sp"
-            android:text="RATINGS_HERE"
+            android:text="ratings HERE..."
              />     
   
 </RelativeLayout>

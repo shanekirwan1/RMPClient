@@ -26,6 +26,7 @@ public class SinglePoliticianActivity extends Activity {
         final TextView lblLastName = (TextView) findViewById(R.id.lastname_label);
         final TextView lblParty = (TextView) findViewById(R.id.party_label);
         
+        // Set the labels from the single contact view
         lblFirstName.setText(politician.getFirstName());
         lblLastName.setText(politician.getLastName());
         lblParty.setText(politician.getParty());
