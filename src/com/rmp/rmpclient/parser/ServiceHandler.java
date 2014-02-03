@@ -1,4 +1,4 @@
-package com.rmp.rmpclient.jsonparsing;
+package com.rmp.rmpclient.parser;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

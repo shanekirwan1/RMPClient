@@ -1,4 +1,4 @@
-package com.rmp.rmpclient.jsonparsing;
+package com.rmp.rmpclient.activities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,6 +6,11 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.rmp.rmpclient.jsonparsing.R;
+import com.rmp.rmpclient.jsonparsing.R.id;
+import com.rmp.rmpclient.jsonparsing.R.layout;
+import com.rmp.rmpclient.parser.ServiceHandler;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;

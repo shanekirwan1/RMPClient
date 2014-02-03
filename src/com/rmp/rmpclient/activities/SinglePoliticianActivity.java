@@ -1,6 +1,9 @@
-package com.rmp.rmpclient.jsonparsing;
+package com.rmp.rmpclient.activities;
 
 import com.rmp.rmpclient.jsonparsing.R;
+import com.rmp.rmpclient.jsonparsing.R.id;
+import com.rmp.rmpclient.jsonparsing.R.layout;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
