@@ -26,28 +26,21 @@ import com.rmp.rmpclient.jsonparsing.R;
 import com.rmp.rmpclient.parser.ServiceHandler;
 import com.rmp.rmpclient.politician.Politician;
 
+/**
+ * The RMP MainActivity.
+ * 
+ * This will contain the entry screen to the app.
+ * 
+ */
 public class MainActivity extends ListActivity {
 
 	/** progress dialog for startup */
 	private ProgressDialog pDialog;
 
-	/** the url of the server to point towards */
-	private static final String SERVER_URL = "http://rmpserver.herokuapp.com/api/politicians";
-
-	/** tags to retrieve json objects */
-	private static final String TAG_ID = "id";
-	private static final String TAG_FIRST_NAME = "firstname";
-	private static final String TAG_LAST_NAME = "lastname";
-	private static final String TAG_PARTY = "party";
-	private static final String TAG_CONSTITUENCY = "constituency";
-	private static final String TAG_URL = "url";
-
 	/** list to populate the view */
-	ArrayList<HashMap<String, String>> politicianDisplayList;
+	private ArrayList<HashMap<String, String>> politicianDisplayList;
 	
-	/**
-	 * List of Politician objects to be stored TODO refactor
-	 */
+	/** List of Politician objects to be stored TODO refactor this to seperate class/cache */
 	private final Map<String, Politician> politicianObjs = new HashMap<String, Politician>(); 
 
 	@Override
@@ -67,13 +60,13 @@ public class MainActivity extends ListActivity {
 				
 				// getting values from selected ListItem
 				final String polID = ((TextView) view.findViewById(R.id.id)).getText().toString();
-				Log.d(getString(R.string.APP_TAG), "Politician ID is : " + polID);
+				Log.d(getString(R.string.APP_DEBUG), "Politician ID is : " + polID);
 				
 				final Politician pol = politicianObjs.get(polID);
 
 				// Starting single contact activity
 				final Intent in = new Intent(getApplicationContext(), SinglePoliticianActivity.class);
-				in.putExtra(getString(R.string.intent_single_pol), pol);
+				in.putExtra(getString(R.string.single_pol_act), pol);
 				startActivity(in);
 				
 			}
@@ -92,7 +85,7 @@ public class MainActivity extends ListActivity {
 			super.onPreExecute();
 			// Showing progress dialog
 			pDialog = new ProgressDialog(MainActivity.this);
-			pDialog.setMessage("Please wait...");
+			pDialog.setMessage(getString(R.string.please_wait));
 			pDialog.setCancelable(false);
 			pDialog.show();
 		}
@@ -102,45 +95,47 @@ public class MainActivity extends ListActivity {
 			final ServiceHandler sh = new ServiceHandler();
 
 			// Making a request to url and getting response
-			final String jsonStr = sh.makeServiceCall(SERVER_URL, ServiceHandler.GET);
+			final String jsonStr = sh.makeServiceCall(getString(R.string.server_url), ServiceHandler.GET);
 			
-			Log.d(getString(R.string.APP_TAG), "jsonStr: " + jsonStr);
+			Log.d(getString(R.string.APP_DEBUG), "jsonStr: " + jsonStr);
 
 			if (jsonStr != null) {
 				try {
 					final JSONArray politicians = new JSONArray(jsonStr);
-					Log.d(getString(R.string.APP_TAG), "Politicians Length: " + politicians.length());
+					Log.d(getString(R.string.APP_DEBUG), "Politicians Length: " + politicians.length());
 					
 					for (int i = 0; i < politicians.length(); i++) {
 						final JSONObject c = politicians.getJSONObject(i);
 
-						final String id = c.getString(TAG_ID);
-						final String firstName = c.getString(TAG_FIRST_NAME);
-						final String lastName = c.getString(TAG_LAST_NAME);
-						final String party = c.getString(TAG_PARTY);
-						final String constituency = c.getString(TAG_CONSTITUENCY);
-						final String url = c.getString(TAG_URL);
+						// Get the tags from the JSON object
+						final String id = c.getString(getString(R.string.id));
+						final String firstName = c.getString(getString(R.id.firstName));
+						final String lastName = c.getString(getString(R.id.lastName));
+						final String party = c.getString(getString(R.string.party));
+						final String constituency = c.getString(getString(R.string.constituency));
+						final String url = c.getString(getString(R.string.url));
 						
 						final Politician p = new Politician(id, firstName, lastName, constituency, party, url);
 
 						// Hashmap of politician tags to details
-						final HashMap<String, String> politician = new HashMap<String, String>();
-						
-						politician.put(TAG_FIRST_NAME, firstName);
-						politician.put(TAG_LAST_NAME, lastName);
-						politician.put(TAG_PARTY, party);
-						politician.put(TAG_ID, id);
+						final HashMap<String, String> mapToListView = new HashMap<String, String>();	
+						mapToListView.put(getString(R.string.firstname), firstName);
+						mapToListView.put(getString(R.string.lastname), lastName);
+						mapToListView.put(getString(R.string.party), party);
+						mapToListView.put(getString(R.string.id), id);
 
 						// adding contact to contact list
-						politicianDisplayList.add(politician);
+						politicianDisplayList.add(mapToListView);
+						
+						// map the politician id to the Politician object to store
 						politicianObjs.put(id, p);
 
 					}
 				} catch (final JSONException e) {
-					e.printStackTrace();
+					// how to handle this exception? possibly have a half complete list...
 				}
 			} else {
-				Log.e("ServiceHandler", "Couldn't get any data from the url");
+				Log.e(getString(R.string.APP_ERROR), "Could not get any data from the url");
 			}
 	
 			return null;
@@ -158,7 +153,8 @@ public class MainActivity extends ListActivity {
 			final ListAdapter adapter = new SimpleAdapter(MainActivity.this,
 					politicianDisplayList, 
 					R.layout.list_item,
-					new String[] { TAG_FIRST_NAME, TAG_LAST_NAME, TAG_PARTY, TAG_ID },
+					new String[] { getString(R.string.firstname), getString(R.string.lastname), 
+										getString(R.string.party), getString(R.string.id) },
 					new int[] { R.id.firstName, R.id.lastName, R.id.party, R.id.id });
 			
 			setListAdapter(adapter);

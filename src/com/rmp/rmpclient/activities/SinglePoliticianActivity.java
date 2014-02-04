@@ -19,7 +19,7 @@ public class SinglePoliticianActivity extends Activity {
         final Intent in = getIntent();
         
         // Get JSON values from previous intent
-        final Politician politician = (Politician) in.getSerializableExtra(getString(R.string.intent_single_pol));
+        final Politician politician = (Politician) in.getSerializableExtra(getString(R.string.single_pol_act));
         
         // Displaying all values on the screen
 		final TextView lblFirstName = (TextView) findViewById(R.id.firstname_label);
