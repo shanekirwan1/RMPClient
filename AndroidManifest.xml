@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-    package="com.rmp.rmpclient"
-    android:versionCode="1"
-    android:versionName="1.0-SNAPSHOT" >
-
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
-
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity android:name=".HelloAndroidActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-=======
     package="com.rmp.rmpclient.jsonparsing"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -54,7 +32,6 @@
             android:label="Profile"
             android:name="com.rmp.rmpclient.activities.SinglePoliticianActivity" >
         </activity>
->>>>>>> 2ce0fbcb5e4ccc72dec2ce1d7fecc008bf279cd4
     </application>
 
 </manifest>
