@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.rmp.rmpclient"
     android:versionCode="1"
     android:versionName="1.0-SNAPSHOT" >
@@ -20,6 +21,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+=======
+    package="com.rmp.rmpclient.jsonparsing"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+    
+    <!-- Internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:allowBackup="true" 
+        >
+        
+        <!-- MainActivity -->
+        <activity
+            android:label="@string/app_name"
+            android:name="com.rmp.rmpclient.activities.MainActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- SinglePoliticianActivity -->
+        <activity
+            android:label="Profile"
+            android:name="com.rmp.rmpclient.activities.SinglePoliticianActivity" >
+        </activity>
+>>>>>>> 2ce0fbcb5e4ccc72dec2ce1d7fecc008bf279cd4
     </application>
 
 </manifest>
