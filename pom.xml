@@ -22,8 +22,25 @@
 			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+            <groupId>junit</groupId>
+        	<artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+		</dependency>
 	</dependencies>
+	
 	<build>
+	    <resources>
+        	<resource>
+            	<directory>src</directory>
+            	<excludes>
+                	<exclude>**/*.java</exclude>
+            	</excludes>
+        	</resource>
+    	</resources>
+	    <sourceDirectory>src</sourceDirectory>
+	    <testSourceDirectory>test</testSourceDirectory>
 		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
@@ -41,10 +58,11 @@
 				<artifactId>android-maven-plugin</artifactId>
 				<configuration>
 					<sdk>
-						<platform>16</platform>
+						<platform>19</platform>
 					</sdk>
-									</configuration>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>
