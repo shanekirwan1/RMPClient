@@ -6,7 +6,8 @@ import java.io.Serializable;
  * Java data object to describe the details of a politician
  */
 public class Politician implements Serializable{
-	
+
+//adding extra test comment
 	/**	Serial ID */
 	private static final long serialVersionUID = 1L;
 	
