@@ -5,7 +5,8 @@ env:
   matrix:
   
     # android-16 is always included
-    - ANDROID_SDKS=sysimg-8 ANDROID_TARGET=android-8 ANDROID_ABI=x86
+    - ANDROID_SDKS=sysimg-8 ANDROID_TARGET=android-8 ANDROID_ABI=x86 ANDROID_PLATFORM=2.2.1 ANDROID_PLUGIN=3.8.0
+    - ANDROID_SDKS=sysimg-16 ANDROID_TARGET=android-16 ANDROID_ABI=x86 ANDROID_PLATFORM=2.2.1 ANDROID_PLUGIN=3.8.0
 
 before_install:
 
