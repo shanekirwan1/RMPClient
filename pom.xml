@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version>${ANDROID_PLATFORM}</platform.version>
 		<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
-		<api.level>${ANDROID_TARGET}</api.level>
+		<api.level>${API_LEVEL}</api.level>
 	</properties>
 
 	<!-- List dependencies -->
