@@ -11,9 +11,9 @@
 	<!-- Set properties -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>4.1.1.4</platform.version>
-		<android.plugin.version>3.8.2</android.plugin.version>
-		<api.level>16</api.level>
+		<platform.version>2.2.1</platform.version>
+		<android.plugin.version>3.8.0</android.plugin.version>
+		<api.level>8</api.level>
 	</properties>
 
 	<!-- List dependencies -->
