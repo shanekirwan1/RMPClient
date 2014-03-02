@@ -9,11 +9,11 @@
 	<name>rmpclient</name>
 
 	<!-- Set properties -->
-	<properties>
+	<properties>		
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>2.2.1</platform.version>
-		<android.plugin.version>3.8.0</android.plugin.version>
-		<api.level>8</api.level>
+		<platform.version>${ANDROID_PLATFORM}</platform.version>
+		<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
+		<api.level>${API_LEVEL}</api.level>
 	</properties>
 
 	<distributionManagement>
