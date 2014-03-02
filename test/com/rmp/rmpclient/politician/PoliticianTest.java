@@ -1,6 +1,7 @@
 package com.rmp.rmpclient.politician;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -28,5 +29,10 @@ public class PoliticianTest {
 		assertEquals(p.getUrl(), "http://politician.com");
 	}
 	
+	@Test
+	public void testNonExistentKeyReturnsNull(){
+		// will be changed to a valid test...
+		assertTrue(true);
+	}
 
 }
