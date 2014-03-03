@@ -82,6 +82,7 @@
 						<instrumentation>
 							<excludes>
 								<exclude>**/BuildConfig.class</exclude>
+								<exclude>**/R.class</exclude>
 							</excludes>
 						</instrumentation>
 					</configuration>
