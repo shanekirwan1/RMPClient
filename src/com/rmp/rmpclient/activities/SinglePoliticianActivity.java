@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.rmp.rmpclient.jsonparsing.R;
+import com.rmp.rmpclient.R;
 import com.rmp.rmpclient.politician.Politician;
 
 public class SinglePoliticianActivity extends Activity {

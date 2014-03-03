@@ -22,7 +22,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.rmp.rmpclient.jsonparsing.R;
+import com.rmp.rmpclient.R;
 import com.rmp.rmpclient.parser.ServiceHandler;
 import com.rmp.rmpclient.politician.Politician;
 
