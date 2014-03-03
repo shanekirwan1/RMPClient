@@ -38,3 +38,6 @@ before_install:
   - android list sdk -a --extended
 
 script: mvn clean install -Dandroid.device=test
+
+after_success:
+  - mvn clean cobertura:cobertura coveralls:cobertura
