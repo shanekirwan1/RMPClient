@@ -47,9 +47,11 @@
 		<resources>
 			<resource>
 				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
+
+			</resource>
+			<resource>
+				<directory>gen</directory>
+
 			</resource>
 		</resources>
 
@@ -81,11 +83,14 @@
 						<aggregate>true</aggregate>
 						<sourceDirectories>
 							<sourceDirectory>src</sourceDirectory>
+							<sourceDirectory>gen</sourceDirectory>
 						</sourceDirectories>
 						<instrumentation>
 							<excludes>
 								<exclude>**/BuildConfig.class</exclude>
 								<exclude>**/R.class</exclude>
+								<exclude>**/BuildConfig.java</exclude>
+								<exclude>**/R.java</exclude>
 								<!-- needless comment -->
 							</excludes>
 						</instrumentation>
@@ -117,11 +122,14 @@
 				<configuration>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
+						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
+							<exclude>**/BuildConfig.java</exclude>
+							<exclude>**/R.java</exclude>
 							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
@@ -134,13 +142,17 @@
 				<artifactId>coveralls-maven-plugin</artifactId>
 				<version>2.0.1</version>
 				<configuration>
+					<repoToken>6esCSdIoCHKWJm7JZUn4ckvQxzVNuGuzB</repoToken>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
+						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
+							<exclude>**/BuildConfig.java</exclude>
+							<exclude>**/R.java</exclude>
 							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
