@@ -11,16 +11,48 @@
 	<!-- Set properties -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>${ANDROID_PLATFORM}</platform.version>
-		<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
-		<api.level>${API_LEVEL}</api.level>
+		<!-- <platform.version>${ANDROID_PLATFORM}</platform.version> <android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version> 
+			<api.level>${API_LEVEL}</api.level>
+		<platform.version>2.2.1</platform.version>
+		<android.plugin.version>3.8.0</android.plugin.version>
+		<api.level>8</api.level> -->
 	</properties>
 
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+					<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<platform.version>2.2.1</platform.version>
+				<android.plugin.version>3.8.0</android.plugin.version>
+				<api.level>8</api.level>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>travis</id>
+			<activation>
+				<property>
+					<name>travis</name>
+				</property>
+			</activation>
+			<properties>
+				<platform.version>${ANDROID_PLATFORM}</platform.version>
+				<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
+				<api.level>${API_LEVEL}</api.level>
+			</properties>
+		</profile>
+	</profiles>
+
 	<distributionManagement>
+		<!-- <repository> <id>rmpclient.repo</id> <name>RMP Client Repo</name> 
+			<url>https://github.com/shanekirwan1/RMPClient</url> </repository> -->
 		<repository>
 			<id>rmpclient.repo</id>
-			<name>RMP Client Repo</name>
-			<url>https://github.com/shanekirwan1/RMPClient</url>
+			<name>RMPClient_apk</name>
+			<url>file://${PROJECT_HOME}/target/</url>
 		</repository>
 	</distributionManagement>
 
