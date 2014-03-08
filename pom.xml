@@ -11,23 +11,18 @@
 	<!-- Set properties -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- <platform.version>${ANDROID_PLATFORM}</platform.version> <android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version> 
-			<api.level>${API_LEVEL}</api.level>
-		<platform.version>2.2.1</platform.version>
-		<android.plugin.version>3.8.0</android.plugin.version>
-		<api.level>8</api.level> -->
 	</properties>
 
 	<profiles>
 		<profile>
 			<id>default</id>
 			<activation>
-					<activeByDefault>true</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<platform.version>2.2.1</platform.version>
+				<platform.version>4.1.1.4</platform.version>
 				<android.plugin.version>3.8.0</android.plugin.version>
-				<api.level>8</api.level>
+				<api.level>19</api.level>
 			</properties>
 		</profile>
 
@@ -69,6 +64,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.1</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>1.4.1</version>
 		</dependency>
 	</dependencies>
 
