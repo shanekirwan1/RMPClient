@@ -110,14 +110,18 @@
 						<aggregate>true</aggregate>
 						<sourceDirectories>
 							<sourceDirectory>src</sourceDirectory>
+							<sourceDirectory>gen</sourceDirectory>
 						</sourceDirectories>
 						<instrumentation>
 							<excludes>
+								<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+								<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+								<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+								<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 								<exclude>**/BuildConfig.class</exclude>
 								<exclude>**/R.class</exclude>
 								<exclude>**/BuildConfig.java</exclude>
 								<exclude>**/R.java</exclude>
-								<!-- needless comment -->
 							</excludes>
 						</instrumentation>
 					</configuration>
@@ -148,14 +152,18 @@
 				<configuration>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
+						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
 							<exclude>**/BuildConfig.java</exclude>
 							<exclude>**/R.java</exclude>
-							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
 				</configuration>
@@ -170,9 +178,14 @@
 					<repoToken>6esCSdIoCHKWJm7JZUn4ckvQxzVNuGuzB</repoToken>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
+						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
 							<exclude>**/BuildConfig.java</exclude>
