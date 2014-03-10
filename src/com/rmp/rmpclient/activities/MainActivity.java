@@ -113,9 +113,8 @@ public class MainActivity extends ListActivity {
 						final String lastName = c.getString(getString(R.id.lastName));
 						final String party = c.getString(getString(R.string.party));
 						final String constituency = c.getString(getString(R.string.constituency));
-						final String url = c.getString(getString(R.string.url));
 						
-						final Politician p = new Politician(id, firstName, lastName, constituency, party, url);
+						final Politician p = new Politician(id, firstName, lastName, constituency, party);
 
 						// Hashmap of politician tags to details
 						final HashMap<String, String> mapToListView = new HashMap<String, String>();	
