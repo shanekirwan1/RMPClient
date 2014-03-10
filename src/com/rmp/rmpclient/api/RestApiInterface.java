@@ -7,16 +7,17 @@ import retrofit.http.GET;
 import retrofit.http.Path;
 
 public interface RestApiInterface {
+	
 	@GET("/api/politicians")
-	List<Politician> allPoliticians();
+	public List<Politician> allPoliticians();
 
 	@GET("/api/politicians/{id}")
-	Politician groupList(@Path("id") String id);
+	public Politician singlePolitician(@Path("id") String id);
 
 	@GET("/api/politicians/party/{party_name}")
-	List<Politician> partyMembers(@Path("party_name") String party);
+	public List<Politician> partyMembers(@Path("party_name") String party);
 
 	@GET("/api/politicians/constituency/{constituency_name}")
-	List<Politician> constituencyMembers(@Path("constituency_name") String constituency);
+	public List<Politician> constituencyMembers(@Path("constituency_name") String constituency);
 
 }
