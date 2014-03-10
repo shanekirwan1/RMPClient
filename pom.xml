@@ -110,7 +110,6 @@
 						<aggregate>true</aggregate>
 						<sourceDirectories>
 							<sourceDirectory>src</sourceDirectory>
-							<sourceDirectory>gen</sourceDirectory>
 						</sourceDirectories>
 						<instrumentation>
 							<excludes>
@@ -152,7 +151,6 @@
 				<configuration>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
-						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
@@ -178,7 +176,6 @@
 					<repoToken>6esCSdIoCHKWJm7JZUn4ckvQxzVNuGuzB</repoToken>
 					<sourceDirectories>
 						<sourceDirectory>src</sourceDirectory>
-						<sourceDirectory>gen</sourceDirectory>
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
