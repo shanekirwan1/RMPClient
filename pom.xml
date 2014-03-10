@@ -20,23 +20,23 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<platform.version>4.1.1.4</platform.version>
-				<android.plugin.version>3.8.0</android.plugin.version>
-				<api.level>19</api.level>
+				<platform.version>${ANDROID_PLATFORM}</platform.version>
+				<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
+				<api.level>${API_LEVEL}</api.level>
 			</properties>
 		</profile>
 
 		<profile>
-			<id>travis</id>
+			<id>local</id>
 			<activation>
 				<property>
-					<name>travis</name>
+					<name>local</name>
 				</property>
 			</activation>
 			<properties>
-				<platform.version>${ANDROID_PLATFORM}</platform.version>
-				<android.plugin.version>${ANDROID_PLUGIN}</android.plugin.version>
-				<api.level>${API_LEVEL}</api.level>
+				<platform.version>4.1.1.4</platform.version>
+				<android.plugin.version>3.8.0</android.plugin.version>
+				<api.level>19</api.level>
 			</properties>
 		</profile>
 	</profiles>
@@ -113,11 +113,14 @@
 						</sourceDirectories>
 						<instrumentation>
 							<excludes>
+								<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+								<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+								<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+								<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 								<exclude>**/BuildConfig.class</exclude>
 								<exclude>**/R.class</exclude>
 								<exclude>**/BuildConfig.java</exclude>
 								<exclude>**/R.java</exclude>
-								<!-- needless comment -->
 							</excludes>
 						</instrumentation>
 					</configuration>
@@ -151,11 +154,14 @@
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
 							<exclude>**/BuildConfig.java</exclude>
 							<exclude>**/R.java</exclude>
-							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
 				</configuration>
@@ -173,11 +179,14 @@
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.class</exclude>
+							<exclude>gen/com/rmp/rmpclient/BuildConfig.java</exclude>
+							<exclude>gen/com/rmp/rmpclient/R.java</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
 							<exclude>**/BuildConfig.java</exclude>
 							<exclude>**/R.java</exclude>
-							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
 				</configuration>
