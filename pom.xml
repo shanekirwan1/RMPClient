@@ -15,6 +15,7 @@
 
 	<profiles>
 		<profile>
+		    <!-- This will be the default profile, as used by Travis -->
 			<id>default</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -27,6 +28,7 @@
 		</profile>
 
 		<profile>
+		    <!-- This will be the local profile. "-P local" should be specified. -->
 			<id>local</id>
 			<activation>
 				<property>
@@ -147,7 +149,7 @@
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
-						    <exclude>**/R$*.class</exclude>
+							<exclude>**/R$*.class</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
 							<!-- needless comment -->
