@@ -113,11 +113,7 @@
 						</sourceDirectories>
 						<instrumentation>
 							<excludes>
-								<exclude>**/BuildConfig.class</exclude>
-								<exclude>**/R.class</exclude>
-								<exclude>**/BuildConfig.java</exclude>
-								<exclude>**/R.java</exclude>
-								<!-- needless comment -->
+								<exclude>**/R*.java</exclude>
 							</excludes>
 						</instrumentation>
 					</configuration>
@@ -151,10 +147,9 @@
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
+						    <exclude>**/R$*.class</exclude>
 							<exclude>**/BuildConfig.class</exclude>
 							<exclude>**/R.class</exclude>
-							<exclude>**/BuildConfig.java</exclude>
-							<exclude>**/R.java</exclude>
 							<!-- needless comment -->
 						</excludes>
 					</instrumentation>
@@ -173,10 +168,6 @@
 					</sourceDirectories>
 					<instrumentation>
 						<excludes>
-							<exclude>**/BuildConfig.class</exclude>
-							<exclude>**/R.class</exclude>
-							<exclude>**/BuildConfig.java</exclude>
-							<exclude>**/R.java</exclude>
 						</excludes>
 					</instrumentation>
 				</configuration>
