@@ -17,12 +17,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.rmp.rmpclient.R;
+import com.rmp.rmpclient.activities.adapter.LazyAdapter;
 import com.rmp.rmpclient.parser.ServiceHandler;
 import com.rmp.rmpclient.politician.Politician;
 
@@ -109,8 +108,8 @@ public class MainActivity extends ListActivity {
 
 						// Get the tags from the JSON object
 						final String id = c.getString(getString(R.string.id));
-						final String firstName = c.getString(getString(R.id.firstName));
-						final String lastName = c.getString(getString(R.id.lastName));
+						final String firstName = c.getString(getString(R.string.firstname));
+						final String lastName = c.getString(getString(R.string.lastname));
 						final String party = c.getString(getString(R.string.party));
 						final String constituency = c.getString(getString(R.string.constituency));
 						
@@ -122,16 +121,16 @@ public class MainActivity extends ListActivity {
 						mapToListView.put(getString(R.string.lastname), lastName);
 						mapToListView.put(getString(R.string.party), party);
 						mapToListView.put(getString(R.string.id), id);
+						mapToListView.put(getString(R.string.image_url), "http://rmpserver.herokuapp.com/portrait/" + id);
 
 						// adding contact to contact list
-						politicianDisplayList.add(mapToListView);
-						
+						politicianDisplayList.add(mapToListView);					
 						// map the politician id to the Politician object to store
 						politicianObjs.put(id, p);
 
 					}
 				} catch (final JSONException e) {
-					// how to handle this exception? possibly have a half complete list...
+					Log.e("something", e.getMessage());
 				}
 			} else {
 				Log.e(getString(R.string.APP_ERROR), "Could not get any data from the url");
@@ -146,17 +145,20 @@ public class MainActivity extends ListActivity {
 			// Dismiss the progress dialog
 			if (pDialog.isShowing())
 				pDialog.dismiss();
+			
 			/**
 			 * Updating parsed JSON data into ListView
 			 * */
-			final ListAdapter adapter = new SimpleAdapter(MainActivity.this,
-					politicianDisplayList, 
-					R.layout.list_item,
-					new String[] { getString(R.string.firstname), getString(R.string.lastname), 
-										getString(R.string.party), getString(R.string.id) },
-					new int[] { R.id.firstName, R.id.lastName, R.id.party, R.id.id });
+//			final ListAdapter adapter = new SimpleAdapter(MainActivity.this,
+//					politicianDisplayList, 
+//					R.layout.list_item,
+//					new String[] { getString(R.string.firstname), getString(R.string.lastname), 
+//										getString(R.string.party), getString(R.string.id) },
+//					new int[] { R.id.firstName, R.id.lastName, R.id.party, R.id.id });
 			
-			setListAdapter(adapter);
+			final ListView lv = getListView();
+			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianDisplayList);			
+			lv.setAdapter(adapter);
 		}
 
 	}

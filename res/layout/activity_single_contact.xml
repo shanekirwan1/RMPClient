@@ -1,61 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  android:padding="10dp">
-  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
     <!-- image label -->
-  
-  <ImageView
+    <ImageView
         android:id="@+id/image_label"
+        android:layout_width="150dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="10dip"/>
+
+    <!-- lastname Label -->
+    <TextView
+        android:id="@+id/lastname_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/shatter_alan"
-        android:layout_alignParentLeft="true"      
-	 />
-  
-    <!-- lastname Label -->
-    <TextView android:id="@+id/lastname_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/image_label"
-            android:paddingTop="10dip"
-            android:textStyle="bold"
-            />
-  
-  	<!-- firstname Label -->
-  	<TextView android:id="@+id/firstname_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lastname_label"
-            android:textStyle="bold"
-            android:paddingTop="2dip"
-            android:textColor="#43bd00"
-             />           
+        android:layout_below="@id/image_label"
+        android:paddingTop="10dip"
+        android:textStyle="bold" />
 
-  <!-- party Label --> 
-  <TextView android:id="@+id/party_label"
-      		android:layout_width="wrap_content"
-      		android:layout_height="wrap_content"
-      		android:layout_below="@id/firstname_label"
-      		android:paddingTop="5dip"
-        	android:textColor="#acacac"
-			/>
-  
-   <!-- ratings button --> 
-	<TextView android:id="@+id/rating_label"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/image_label"
-            android:textStyle="bold"
-            android:paddingTop="10dip"
-            android:paddingBottom="10dip"
-            android:paddingLeft="10dip"
-            android:textColor="#43bd00"
-            android:textSize="15sp"
-            android:text="ratings HERE..."
-             />     
-  
+    <!-- firstname Label -->
+
+    <TextView
+        android:id="@+id/firstname_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lastname_label"
+        android:paddingTop="2dip"
+        android:textColor="#43bd00"
+        android:textStyle="bold" />
+
+    <!-- party Label -->
+
+    <TextView
+        android:id="@+id/party_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstname_label"
+        android:paddingTop="5dip"
+        android:textColor="#acacac" />
+
+    <!-- ratings button -->
+
+    <TextView
+        android:id="@+id/rating_label"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/image_label"
+        android:paddingBottom="10dip"
+        android:paddingLeft="10dip"
+        android:paddingTop="10dip"
+        android:text="ratings HERE..."
+        android:textColor="#43bd00"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

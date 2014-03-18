@@ -15,6 +15,7 @@
     	<string name="party">party</string>
     	<string name="constituency">constituency</string>
     	<string name="url">url</string>
+    	<string name="image_url">image_url</string>
     	
     	<!-- intent tags -->
     	<string name="single_pol_act">single_pol_act</string>
