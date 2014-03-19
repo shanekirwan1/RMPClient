@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,17 +44,13 @@ public class LazyAdapter extends BaseAdapter {
  
     @Override
 	public View getView(final int position, final View convertView, final ViewGroup parent) {
-        View vi = convertView;
+        
+    	View vi = convertView;
 		if (convertView == null) {
 			vi = inflater.inflate(R.layout.list_item, null);
 		}
-		TextView firstName = null;
-		try {
-			firstName = (TextView) vi
-					.findViewById(R.id.firstName);
-		} catch (final Throwable t) {
-			Log.e("ealdunn", t.getMessage());
-		}
+
+		final TextView	firstName = (TextView) vi.findViewById(R.id.firstName);
         final TextView lastName = (TextView) vi.findViewById(R.id.lastName);
         final TextView party = (TextView) vi.findViewById(R.id.party);
         final TextView id = (TextView) vi.findViewById(R.id.id);
@@ -68,9 +63,8 @@ public class LazyAdapter extends BaseAdapter {
         lastName.setText(politician.get("lastname"));
         party.setText(politician.get("party"));
         id.setText(politician.get("id"));
-        //imageLoader.DisplayImage(politician.get("image_url"), thumb_image);
-        Picasso.with(activity).load(politician.get("image_url")).into(thumb_image);
-        
+        Picasso.with(activity).load(politician.get("image_url")).resize(140, -1).into(thumb_image);
+                
         return vi;
     }
 }
