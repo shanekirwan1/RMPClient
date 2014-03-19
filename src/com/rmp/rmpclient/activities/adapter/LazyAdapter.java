@@ -1,5 +1,5 @@
 package com.rmp.rmpclient.activities.adapter;
- 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,19 +14,19 @@ import android.widget.TextView;
 
 import com.rmp.rmpclient.R;
 import com.squareup.picasso.Picasso;
- 
+
 public class LazyAdapter extends BaseAdapter {
- 
+
     private final Activity activity;
     private final ArrayList<HashMap<String, String>> data;
     private static LayoutInflater inflater = null;
- 
+
     public LazyAdapter(final Activity a, final ArrayList<HashMap<String, String>> d) {
         activity = a;
         data = d;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
- 
+
     @Override
 	public int getCount() {
         return data.size();
