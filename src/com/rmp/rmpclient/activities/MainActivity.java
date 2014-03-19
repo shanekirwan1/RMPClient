@@ -159,6 +159,7 @@ public class MainActivity extends ListActivity {
 			final ListView lv = getListView();
 			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianDisplayList);			
 			lv.setAdapter(adapter);
+		
 		}
 
 	}

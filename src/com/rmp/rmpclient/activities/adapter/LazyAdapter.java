@@ -63,7 +63,7 @@ public class LazyAdapter extends BaseAdapter {
         lastName.setText(politician.get("lastname"));
         party.setText(politician.get("party"));
         id.setText(politician.get("id"));
-        Picasso.with(activity).load(politician.get("image_url")).resize(140, -1).into(thumb_image);
+        Picasso.with(activity).load(politician.get("image_url")).resize(140, 160).into(thumb_image);
                 
         return vi;
     }
