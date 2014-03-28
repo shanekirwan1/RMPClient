@@ -14,4 +14,5 @@ public class PoliticianDAOFactory {
 	public RMPRestInterface getPoliticianDAO() {
 		return RestPoliticianDAO.getInstance();
 	}
+	
 }

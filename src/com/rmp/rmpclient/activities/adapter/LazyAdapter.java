@@ -67,4 +67,5 @@ public class LazyAdapter extends BaseAdapter {
                 
         return vi;
     }
+    
 }

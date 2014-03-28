@@ -1,6 +1,11 @@
 package com.rmp.rmpclient.utils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 
 public class DoubleListIterator<T> implements Iterator<T>{
@@ -38,8 +43,7 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 }
