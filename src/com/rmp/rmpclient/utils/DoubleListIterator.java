@@ -7,23 +7,38 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * This class provides an Iterator using two Lists - one main list
+ * and another to cache.
+ */
 public class DoubleListIterator<T> implements Iterator<T>{
 	
+	/** Random object to pick object from a Collection */
 	private static final Random RANDOM = new Random();
 
+	/** The List in which to cache objects */
 	private List<T> cacheList;
+	
+	/** The main list to store */
 	private List<T> mainList;
 
-	public DoubleListIterator(Collection<T> politicians) {
-		if(politicians == null) politicians = Collections.emptyList();
-		this.mainList = new ArrayList<T>(politicians);
+	/**
+	 * Constructs a DoubleListIterator object.
+	 * 
+	 * @param objects
+	 *            a Collection of objects. This Collection can be null.
+	 */
+	public DoubleListIterator(Collection<T> objects) {
+		if (objects == null) {
+			objects = Collections.emptyList();
+		}
+		this.mainList = new ArrayList<T>(objects);
 		this.cacheList = new ArrayList<T>(mainList.size());
 	}
 
 	@Override
 	public boolean hasNext() {
-		if(mainList.isEmpty()){
+		if (mainList.isEmpty()) {
 			final List<T> temp = mainList;
 			mainList = cacheList;
 			cacheList = temp;
@@ -35,15 +50,16 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	public T next() {
 		hasNext();
 		
+		// What should we do when the list is emtpty?? TODO
 		final int index = RANDOM.nextInt(mainList.size());
-		final T politician = mainList.remove(index);
-		cacheList.add(politician);
-		return politician;
+		final T object = mainList.remove(index);
+		cacheList.add(object);
+		return object;
 	}
 	
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub	
+		throw new UnsupportedOperationException("The remove() method should never be called.");
 	}
 
 }
