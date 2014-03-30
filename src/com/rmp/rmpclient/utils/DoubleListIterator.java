@@ -39,21 +39,27 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	@Override
 	public boolean hasNext() {
 		if (mainList.isEmpty()) {
+			// if empty then fill it
 			final List<T> temp = mainList;
 			mainList = cacheList;
 			cacheList = temp;
+		} else {
+			// if mainList not empty all is good.
+			return true;
 		}
-		return true;
+		// TODO question: should we return false if there is still nothing in mainList after? 
+		return !mainList.isEmpty();
 	}
 
 	@Override
 	public T next() {
-		hasNext();
-		
-		// What should we do when the list is emtpty?? TODO
-		final int index = RANDOM.nextInt(mainList.size());
-		final T object = mainList.remove(index);
-		cacheList.add(object);
+		// TODO changed this up a bit - discuss with lads
+		T object = null;
+		if (hasNext()){
+			final int index = RANDOM.nextInt(mainList.size());
+			object = mainList.remove(index);
+			cacheList.add(object);
+		}
 		return object;
 	}
 	

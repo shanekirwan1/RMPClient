@@ -1,6 +1,8 @@
 package com.rmp.rmpclient.utils;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -30,13 +32,7 @@ public class DoubleListIteratorTest {
 	@Test
 	public void testNext() throws Exception {
 		
-		final List<MockObjectToTest> mockedObjs = new ArrayList<MockObjectToTest>();
-		mockedObjs.add(new MockObjectToTest("1", "john"));
-		mockedObjs.add(new MockObjectToTest("2", "tom"));
-		mockedObjs.add(new MockObjectToTest("3", "jimmy"));
-		
-		testIterator = new DoubleListIterator<MockObjectToTest>(mockedObjs);
-		
+		fillIterator();	
 		final MockObjectToTest mock = testIterator.next();
 		
 		boolean verdict = false;
@@ -53,35 +49,15 @@ public class DoubleListIteratorTest {
 			throw new Exception("None of the expected politician IDs have been returned.");
 		}
 		
-		assertTrue(verdict);
-		
+		assertTrue(verdict);		
 	}
 	
 	@Test
-	public void testNextIsRandom() throws Exception {
-		
-		final List<MockObjectToTest> mockedObjs = new ArrayList<MockObjectToTest>();
-		mockedObjs.add(new MockObjectToTest("1", "john"));
-		mockedObjs.add(new MockObjectToTest("2", "tom"));
-		mockedObjs.add(new MockObjectToTest("3", "jimmy"));
-		
-		testIterator = new DoubleListIterator<MockObjectToTest>(mockedObjs);
+	public void testNextIsRandom() throws Exception {		
+		fillIterator();
 		verifyRandomness(testIterator);
 		// should switch the cache list back to the main list the second time and repeat...
 		verifyRandomness(testIterator);
-	}
-	
-	// TODO fix the RANDOM part in DLI.class
-	@Test(expected=IllegalArgumentException.class)
-	public void testNextWithNullIterator(){
-		final MockObjectToTest mock = testIterator.next();
-		final String name = mock.name();	
-		assertEquals("john", name); // failing
-	}
-	
-	@Test
-	public void testHasNext(){
-		assertTrue(testIterator.hasNext());
 	}
 	
 	@Test
@@ -92,6 +68,22 @@ public class DoubleListIteratorTest {
 		} catch (final UnsupportedOperationException uoe) {
 			assertEquals("The remove() method should never be called.", uoe.getMessage());
 		}
+	}
+	
+	@Test
+	public void testHasNextReturnsFalseWhenMainListEmpty() {
+		assertFalse(testIterator.hasNext());
+	}
+	
+	@Test
+	public void testHasNextReturnsTrueWhenMainListNotEmpty() {
+		fillIterator();
+		assertTrue(testIterator.hasNext());
+	}
+	
+	@Test
+	public void testNextWithEmtpyIteratorReturnsNull() {
+		assertNull(testIterator.next());
 	}
 	
 	// ================= private methods ==========================================
@@ -146,6 +138,15 @@ public class DoubleListIteratorTest {
 
 	private String getId(final DoubleListIterator<MockObjectToTest> i) {
 		return i.next().getId();
+	}
+	
+	private void fillIterator() {
+		final List<MockObjectToTest> mockedObjs = new ArrayList<MockObjectToTest>();
+		mockedObjs.add(new MockObjectToTest("1", "john"));
+		mockedObjs.add(new MockObjectToTest("2", "tom"));
+		mockedObjs.add(new MockObjectToTest("3", "jimmy"));
+		
+		testIterator = new DoubleListIterator<MockObjectToTest>(mockedObjs);
 	}
 	
 	private class MockObjectToTest{

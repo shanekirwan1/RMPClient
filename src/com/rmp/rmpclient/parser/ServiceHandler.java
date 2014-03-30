@@ -37,9 +37,8 @@ public class ServiceHandler {
 	 * 
 	 * @method - http request method
 	 */
-	public String makeServiceCall(String url, int method) {
-
-		Log.d(SHANE_TAG, "makeServiceCall(url,method,null): " + url+", int: "+method);
+	public String makeServiceCall(final String url, final int method) {
+		Log.d(SHANE_TAG, "makeServiceCall(url,method,null): " + url+", int: " + method);
 		return this.makeServiceCall(url, method, null);
 	}
 
@@ -52,17 +51,17 @@ public class ServiceHandler {
 	 * 
 	 * @params - http request params
 	 */
-	public String makeServiceCall(String url, int method, List<NameValuePair> params) {
+	private String makeServiceCall(String url, final int method, final List<NameValuePair> params) {
 		try {
 			// http client
-			DefaultHttpClient httpClient = new DefaultHttpClient();
+			final DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpEntity httpEntity = null;
 			HttpResponse httpResponse = null;
 
 			// Checking http request method type
 			if (method == POST) {
 				Log.d(SHANE_TAG, "SHANE, POST Request: " + url);
-				HttpPost httpPost = new HttpPost(url);
+				final HttpPost httpPost = new HttpPost(url);
 				// adding post params
 				if (params != null) {
 					Log.d(SHANE_TAG, "SHANE, Params are not null...");
@@ -75,11 +74,11 @@ public class ServiceHandler {
 
 				// appending params to url
 				if (params != null) {
-					String paramString = URLEncodedUtils.format(params, "utf-8");
+					final String paramString = URLEncodedUtils.format(params, "utf-8");
 					url += "?" + paramString;
 					Log.d(SHANE_TAG, "SHANE, NEW URL is: " + url);
 				}
-				HttpGet httpGet = new HttpGet(url);
+				final HttpGet httpGet = new HttpGet(url);
 
 				httpResponse = httpClient.execute(httpGet);
 
@@ -89,11 +88,11 @@ public class ServiceHandler {
 
 			Log.d(SHANE_TAG, "SHANE, WE HAVE A RESPONSE: " + response);
 
-		} catch (UnsupportedEncodingException e) {
+		} catch (final UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch (ClientProtocolException e) {
+		} catch (final ClientProtocolException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 

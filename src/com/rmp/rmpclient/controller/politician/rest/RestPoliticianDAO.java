@@ -15,6 +15,17 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	private static RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
 	private static RMPRestInterface rest = restAdapter.create(RMPRestInterface.class);
 	
+	/**
+	 * Private constructor for Singleton.
+	 */
+	private RestPoliticianDAO() {
+	}
+	
+	/**
+	 * Gets the Singleton RestPoliticianDAO instance.
+	 * 
+	 * @return the Singleton instance
+	 */
 	public static RestPoliticianDAO getInstance() {
 		return INSTANCE;
 	}
