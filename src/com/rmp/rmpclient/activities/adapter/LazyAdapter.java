@@ -1,10 +1,5 @@
 package com.rmp.rmpclient.activities.adapter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -69,7 +64,7 @@ public class LazyAdapter extends BaseAdapter {
         party.setText(politician.getParty());
         id.setText(politician.getId());
         Picasso.with(activity)
-        .load(politicianProfile.getImage())
+        .load(politicianProfile.getImage().getImageUrl())
         		.resize(140, 160)
         		.into(thumb_image);
                 

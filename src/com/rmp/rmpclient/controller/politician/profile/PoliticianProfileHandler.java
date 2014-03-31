@@ -1,6 +1,9 @@
 package com.rmp.rmpclient.controller.politician.profile;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+
+import android.util.Log;
 
 import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
 import com.rmp.rmpclient.politician.Politician;
@@ -13,15 +16,21 @@ public class PoliticianProfileHandler {
 	
 	/** Iterates through a collection of politician*/
 	private final Iterator<Politician> politicianIterator;
-	private final Collection<Politician> politicians;
+	private Collection<Politician> politicians = null;
 	
 	/**
 	 * Constructs a PoliticianProfileHandler
 	 */
 	public PoliticianProfileHandler() {
-		politicians = PoliticianDAOFactory.getInstance()
+		try {
+			Log.d("EALDUNN", "RUNNING!!");
+			politicians = PoliticianDAOFactory.getInstance()
 				.getPoliticianDAO()
 				.getAllPoliticians();
+			Log.d("EALDUNN", "RAN!!");
+		} catch (final Throwable e){
+			Log.d("EALDUNN",e.getMessage());
+		}
 		politicianIterator = 
 				new DoubleListIterator<Politician>(politicians);
 	}

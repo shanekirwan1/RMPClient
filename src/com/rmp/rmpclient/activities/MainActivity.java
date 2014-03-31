@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -22,9 +18,7 @@ import android.widget.TextView;
 
 import com.rmp.rmpclient.R;
 import com.rmp.rmpclient.activities.adapter.LazyAdapter;
-import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
 import com.rmp.rmpclient.controller.politician.profile.PoliticianProfileHandler;
-import com.rmp.rmpclient.parser.ServiceHandler;
 import com.rmp.rmpclient.politician.Politician;
 
 /**
@@ -120,7 +114,7 @@ public class MainActivity extends ListActivity {
 //					new int[] { R.id.firstName, R.id.lastName, R.id.party, R.id.id });
 			
 			final ListView lv = getListView();
-			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianProfileHandler.);			
+			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianProfileHandler);			
 			lv.setAdapter(adapter);
 		
 		}
