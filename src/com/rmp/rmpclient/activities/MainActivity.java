@@ -22,6 +22,8 @@ import android.widget.TextView;
 
 import com.rmp.rmpclient.R;
 import com.rmp.rmpclient.activities.adapter.LazyAdapter;
+import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
+import com.rmp.rmpclient.controller.politician.profile.PoliticianProfileHandler;
 import com.rmp.rmpclient.parser.ServiceHandler;
 import com.rmp.rmpclient.politician.Politician;
 
@@ -42,9 +44,14 @@ public class MainActivity extends ListActivity {
 	/** List of Politician objects to be stored TODO refactor this to seperate class/cache */
 	private final Map<String, Politician> politicianObjs = new HashMap<String, Politician>(); 
 
+	/**/
+	PoliticianProfileHandler politicianProfileHandler;
 	@Override
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		new GetContacts().execute();
+		
 		setContentView(R.layout.activity_main);
 
 		politicianDisplayList = new ArrayList<HashMap<String, String>>();
@@ -71,7 +78,7 @@ public class MainActivity extends ListActivity {
 			}
 		});
 
-		new GetContacts().execute();
+		
 	}
 
 	/**
@@ -91,51 +98,7 @@ public class MainActivity extends ListActivity {
 
 		@Override
 		protected Void doInBackground(final Void... arg0) {
-			final ServiceHandler sh = new ServiceHandler();
-
-			// Making a request to url and getting response
-			final String jsonStr = sh.makeServiceCall(getString(R.string.server_url), ServiceHandler.GET);
-			
-			Log.d(getString(R.string.APP_DEBUG), "jsonStr: " + jsonStr);
-
-			if (jsonStr != null) {
-				try {
-					final JSONArray politicians = new JSONArray(jsonStr);
-					Log.d(getString(R.string.APP_DEBUG), "Politicians Length: " + politicians.length());
-					
-					for (int i = 0; i < politicians.length(); i++) {
-						final JSONObject c = politicians.getJSONObject(i);
-
-						// Get the tags from the JSON object
-						final String id = c.getString(getString(R.string.id));
-						final String firstName = c.getString(getString(R.string.firstname));
-						final String lastName = c.getString(getString(R.string.lastname));
-						final String party = c.getString(getString(R.string.party));
-						final String constituency = c.getString(getString(R.string.constituency));
-						
-						final Politician p = new Politician(id, firstName, lastName, constituency, party);
-
-						// Hashmap of politician tags to details
-						final HashMap<String, String> mapToListView = new HashMap<String, String>();	
-						mapToListView.put(getString(R.string.firstname), firstName);
-						mapToListView.put(getString(R.string.lastname), lastName);
-						mapToListView.put(getString(R.string.party), party);
-						mapToListView.put(getString(R.string.id), id);
-						mapToListView.put(getString(R.string.image_url), "http://rmpserver.herokuapp.com/portrait/" + id);
-
-						// adding contact to contact list
-						politicianDisplayList.add(mapToListView);					
-						// map the politician id to the Politician object to store
-						politicianObjs.put(id, p);
-
-					}
-				} catch (final JSONException e) {
-					Log.e("something", e.getMessage());
-				}
-			} else {
-				Log.e(getString(R.string.APP_ERROR), "Could not get any data from the url");
-			}
-	
+			politicianProfileHandler = new PoliticianProfileHandler();
 			return null;
 		}
 
@@ -157,7 +120,7 @@ public class MainActivity extends ListActivity {
 //					new int[] { R.id.firstName, R.id.lastName, R.id.party, R.id.id });
 			
 			final ListView lv = getListView();
-			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianDisplayList);			
+			final LazyAdapter adapter = new LazyAdapter(MainActivity.this, politicianProfileHandler.);			
 			lv.setAdapter(adapter);
 		
 		}

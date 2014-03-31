@@ -2,6 +2,7 @@ package com.rmp.rmpclient.activities.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
@@ -15,24 +16,25 @@ import android.widget.TextView;
 
 import com.rmp.rmpclient.R;
 import com.rmp.rmpclient.controller.politician.profile.PoliticianProfile;
+import com.rmp.rmpclient.controller.politician.profile.PoliticianProfileHandler;
 import com.rmp.rmpclient.politician.Politician;
 import com.squareup.picasso.Picasso;
 
 public class LazyAdapter extends BaseAdapter {
 
     private final Activity activity;
-    private final List<PoliticianProfile> politicianProfiles;
+    private final PoliticianProfileHandler politicianProfileHandler;
     private static LayoutInflater inflater = null;
 
-    public LazyAdapter(final Activity a, final List<PoliticianProfile> politicianProfiles) {
+    public LazyAdapter(final Activity a, final PoliticianProfileHandler politicianProfileHandler) {
         activity = a;
-        this.politicianProfiles = politicianProfiles;
+        this.politicianProfileHandler = politicianProfileHandler;
         inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
 	public int getCount() {
-        return this.politicianProfiles.size();
+        return this.politicianProfileHandler.getSize();
     }
  
     @Override
@@ -59,14 +61,15 @@ public class LazyAdapter extends BaseAdapter {
         final TextView id = (TextView) vi.findViewById(R.id.id);
         final ImageView thumb_image = (ImageView) vi.findViewById(R.id.image);
  
-        Politician politician = politicianProfiles.get(position).getPolitician();
+        final PoliticianProfile politicianProfile = politicianProfileHandler.getNext();
+        final Politician politician = politicianProfile.getPolitician();
 
         firstName.setText(politician.getFirstName());
         lastName.setText(politician.getLastName());
         party.setText(politician.getParty());
         id.setText(politician.getId());
         Picasso.with(activity)
-        .load(politicianProfiles.get(position).getImage())
+        .load(politicianProfile.getImage())
         		.resize(140, 160)
         		.into(thumb_image);
                 
