@@ -39,14 +39,11 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	@Override
 	public boolean hasNext() {
 		if (mainList.isEmpty()) {
-			// if empty then fill it
+			// if empty then switch collections
 			final List<T> temp = mainList;
 			mainList = cacheList;
 			cacheList = temp;
-		} else {
-			// if mainList not empty all is good.
-			return true;
-		}
+		} 
 		// TODO question: should we return false if there is still nothing in mainList after? 
 		return !mainList.isEmpty();
 	}
@@ -54,12 +51,13 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	@Override
 	public T next() {
 		// TODO changed this up a bit - discuss with lads
-		T object = null;
-		if (hasNext()){
-			final int index = RANDOM.nextInt(mainList.size());
-			object = mainList.remove(index);
-			cacheList.add(object);
+		if (!hasNext()){
+			throw new java.util.NoSuchElementException("Iterator has no next element.");
 		}
+		
+		final int index = RANDOM.nextInt(mainList.size());
+		final T object = mainList.remove(index);
+		cacheList.add(object);
 		return object;
 	}
 	

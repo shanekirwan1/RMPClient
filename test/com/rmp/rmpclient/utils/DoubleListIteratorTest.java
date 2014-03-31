@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.After;
 import org.junit.Before;
@@ -82,8 +83,13 @@ public class DoubleListIteratorTest {
 	}
 	
 	@Test
-	public void testNextWithEmtpyIteratorReturnsNull() {
-		assertNull(testIterator.next());
+	public void testNextWithEmtpyIteratorThrowsException() {
+		try {
+			assertNull(testIterator.next());
+			fail("NoSuchElementException should have been thrown.");
+		} catch (final NoSuchElementException nsee) {
+			assertEquals("Iterator has no next element.", nsee.getMessage());
+		}
 	}
 	
 	// ================= private methods ==========================================

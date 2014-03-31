@@ -17,7 +17,7 @@ public class RestPoliticianDAOTest {
 	@Test
 	public void testGetAllPoliticians() {
 		
-		rest.getAllPoliticians();
+		//rest.getAllPoliticians();
 	}
 
 }
