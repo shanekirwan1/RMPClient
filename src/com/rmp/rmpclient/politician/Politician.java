@@ -14,10 +14,10 @@ public class Politician implements Serializable {
 	private final String id;
 
 	/** The first name */
-	private final String firstName;
+	private final String firstname;
 	
 	/** The last name */
-	private final String lastName;
+	private final String lastname;
 	
 	/** The constituency*/
 	private final String constituency;
@@ -43,8 +43,8 @@ public class Politician implements Serializable {
 			final String lastName, final String constituency, 
 			final String party) {
 		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.constituency = constituency;
 		this.party = party;
 	}
@@ -73,7 +73,7 @@ public class Politician implements Serializable {
 	 * @return the lastName
 	 */
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class Politician implements Serializable {
 	 * @return the firstName
 	 */
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 
 	/**
