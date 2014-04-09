@@ -18,7 +18,7 @@
 			<!-- This will be the default profile, as used by Travis -->
 			<id>default</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<name>travis</name>
 			</activation>
 			<properties>
 				<platform.version>${ANDROID_PLATFORM}</platform.version>
@@ -32,7 +32,7 @@
 			<id>local</id>
 			<activation>
 				<property>
-					<name>local</name>
+				<activeByDefault>true</activeByDefault>
 				</property>
 			</activation>
 			<properties>
