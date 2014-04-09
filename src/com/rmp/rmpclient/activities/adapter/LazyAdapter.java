@@ -20,7 +20,7 @@ public class LazyAdapter extends BaseAdapter {
 	private final Activity activity;
 	private final PoliticianProfileHandler politicianProfileHandler;
 	private static LayoutInflater inflater = null;
-
+	
 	public LazyAdapter(final Activity a,
 			final PoliticianProfileHandler politicianProfileHandler) {
 		activity = a;
@@ -60,13 +60,13 @@ public class LazyAdapter extends BaseAdapter {
 		final ImageView thumb_image = (ImageView) vi.findViewById(R.id.image);
 
 		final PoliticianProfile politicianProfile = politicianProfileHandler
-				.getNext();
+				.get(position);
 		final Politician politician = politicianProfile.getPolitician();
 
 		firstName.setText(politician.getFirstName());
 		lastName.setText(politician.getLastName());
 		party.setText(politician.getParty());
-		id.setText(politician.getId());
+		id.setText(politician.getId() + " - " + position);
 		final Picasso instance = Picasso.with(activity);
 		instance.setDebugging(true);
 		instance.load(politicianProfile.getImage().getImageUrl())

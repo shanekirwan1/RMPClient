@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
 import com.rmp.rmpclient.politician.Politician;
+import com.rmp.rmpclient.utils.CursorList;
 import com.rmp.rmpclient.utils.DoubleListIterator;
 
 /**
@@ -18,6 +19,9 @@ public class PoliticianProfileHandler {
 	/** Iterates through a collection of politician*/
 	private final Iterator<PoliticianProfile> politicianPIterator;
 	private Collection<PoliticianProfile> politicianProfiles = null;
+	
+	private CursorList<PoliticianProfile> timeline = new CursorList<PoliticianProfile>();
+	private int lastPosition = -1;
 	
 	/**
 	 * Constructs a PoliticianProfileHandler
@@ -36,18 +40,22 @@ public class PoliticianProfileHandler {
 			
 			Log.d("EALDUNN", "RAN!!");
 		} catch (final Throwable e){
-			Log.d("EALDUNN",e.getMessage());
+			Log.e("EALDUNN",e.getMessage());
 		}
 		politicianPIterator = 
 				new DoubleListIterator<PoliticianProfile>(politicianProfiles);
 	}
 	
-	public PoliticianProfile getNext() {
-		return politicianPIterator.next();
-	}
 	
 	public int getSize() {
 		return politicianProfiles.size();
+	}
+
+	public PoliticianProfile get(int position) {
+		if(timeline.hasPosition(position)){
+			return timeline.get(position);
+		}
+		return timeline.offer(position, politicianPIterator.next());
 	}
 
 }

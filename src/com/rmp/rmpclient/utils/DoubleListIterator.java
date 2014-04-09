@@ -3,8 +3,12 @@ package com.rmp.rmpclient.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 /**
@@ -21,6 +25,7 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	
 	/** The main list to store */
 	private List<T> mainList;
+	
 
 	/**
 	 * Constructs a DoubleListIterator object.
@@ -52,7 +57,7 @@ public class DoubleListIterator<T> implements Iterator<T>{
 	public T next() {
 		// TODO changed this up a bit - discuss with lads
 		if (!hasNext()){
-			throw new java.util.NoSuchElementException("Iterator has no next element.");
+			throw new NoSuchElementException("Iterator has no next element.");
 		}
 		
 		final int index = RANDOM.nextInt(mainList.size());
