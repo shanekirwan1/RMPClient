@@ -41,6 +41,8 @@ before_install:
   # something to do with coveralls...
   - sudo sed -i 's/security.provider.9/#security.provider.9/g' $JAVA_HOME/jre/lib/security/java.security
 
+#skip the install
+install: true
 script: mvn clean install -Dandroid.device=test -Dtravis
 
 after_success:

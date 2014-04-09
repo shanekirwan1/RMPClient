@@ -16,7 +16,7 @@
   <profiles>
     <profile>
       <!-- This will be the default profile, as used by Travis -->
-      <id>default</id>
+      <id>travis</id>
       <activation>
         <property>
           <name>travis</name>
