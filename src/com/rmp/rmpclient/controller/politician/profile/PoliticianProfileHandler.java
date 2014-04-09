@@ -2,6 +2,7 @@ package com.rmp.rmpclient.controller.politician.profile;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import android.util.Log;
 
@@ -15,32 +16,38 @@ import com.rmp.rmpclient.utils.DoubleListIterator;
 public class PoliticianProfileHandler {
 	
 	/** Iterates through a collection of politician*/
-	private final Iterator<Politician> politicianIterator;
-	private Collection<Politician> politicians = null;
+	private final Iterator<PoliticianProfile> politicianPIterator;
+	private Collection<PoliticianProfile> politicianProfiles = null;
 	
 	/**
 	 * Constructs a PoliticianProfileHandler
 	 */
 	public PoliticianProfileHandler() {
+		politicianProfiles = new LinkedList<PoliticianProfile>();
 		try {
 			Log.d("EALDUNN", "RUNNING!!");
-			politicians = PoliticianDAOFactory.getInstance()
+			Collection<Politician> politicians = PoliticianDAOFactory.getInstance()
 				.getPoliticianDAO()
 				.getAllPoliticians();
+			
+			for(Politician p:politicians){
+				politicianProfiles.add(new PoliticianProfile(p));
+			}
+			
 			Log.d("EALDUNN", "RAN!!");
 		} catch (final Throwable e){
 			Log.d("EALDUNN",e.getMessage());
 		}
-		politicianIterator = 
-				new DoubleListIterator<Politician>(politicians);
+		politicianPIterator = 
+				new DoubleListIterator<PoliticianProfile>(politicianProfiles);
 	}
 	
 	public PoliticianProfile getNext() {
-		return new PoliticianProfile(politicianIterator.next());
+		return politicianPIterator.next();
 	}
 	
 	public int getSize() {
-		return politicians.size();
+		return politicianProfiles.size();
 	}
 
 }
