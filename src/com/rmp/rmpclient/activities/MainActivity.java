@@ -32,9 +32,6 @@ public class MainActivity extends ListActivity {
 	/** progress dialog for startup */
 	private ProgressDialog pDialog;
 
-	/** list to populate the view */
-	private ArrayList<HashMap<String, String>> politicianDisplayList;
-	
 	/** List of Politician objects to be stored TODO refactor this to seperate class/cache */
 	private final Map<String, Politician> politicianObjs = new HashMap<String, Politician>(); 
 
@@ -48,7 +45,6 @@ public class MainActivity extends ListActivity {
 		
 		setContentView(R.layout.activity_main);
 
-		politicianDisplayList = new ArrayList<HashMap<String, String>>();
 		final ListView lv = getListView();
 
 		// Listview on item click listener

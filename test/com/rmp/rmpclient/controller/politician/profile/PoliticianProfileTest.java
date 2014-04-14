@@ -15,7 +15,7 @@ public class PoliticianProfileTest {
 
 	@Before
 	public void setUp() throws Exception {
-		final Politician politician = new Politician("100", "alan", "shearer", "newcastle", "boring-party");
+		final Politician politician = new Politician(100, "alan", "shearer", "newcastle", "boring-party");
 		profile = new PoliticianProfile(politician);
 	}
 

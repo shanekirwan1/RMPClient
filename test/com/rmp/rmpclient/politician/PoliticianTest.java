@@ -19,13 +19,13 @@ public class PoliticianTest {
 
 	@Test
 	public void testConstructor() {
-		final Politician p = new Politician("1", "Seanie", "O'Leary", "Dublin", "Fianna Fáil");
+		final Politician p = new Politician(1, "Seanie", "O'Leary", "Dublin", "Fianna Fail");
 		
-		assertEquals(p.getId(), "1");
+		assertEquals(p.getId(), 1);
 		assertEquals(p.getFirstName(), "Seanie");
 		assertEquals(p.getLastName(), "O'Leary");
 		assertEquals(p.getConstituency(), "Dublin");
-		assertEquals(p.getParty(), "Fianna Fáil");
+		assertEquals(p.getParty(), "Fianna Fail");
 	}
 	
 	@Test

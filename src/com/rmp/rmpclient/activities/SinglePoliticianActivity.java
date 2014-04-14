@@ -36,4 +36,6 @@ public class SinglePoliticianActivity extends Activity {
         lblParty.setText(politician.getParty());
 
 	}
+	
+	
 }

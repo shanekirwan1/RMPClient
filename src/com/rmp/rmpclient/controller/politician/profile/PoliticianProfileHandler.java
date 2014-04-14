@@ -21,7 +21,6 @@ public class PoliticianProfileHandler {
 	private Collection<PoliticianProfile> politicianProfiles = null;
 	
 	private CursorList<PoliticianProfile> timeline = new CursorList<PoliticianProfile>();
-	private int lastPosition = -1;
 	
 	/**
 	 * Constructs a PoliticianProfileHandler

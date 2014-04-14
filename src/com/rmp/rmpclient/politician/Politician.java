@@ -11,7 +11,7 @@ public class Politician implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** The unique ID */
-	private final String id;
+	private final int id;
 
 	/** The first name */
 	private final String firstname;
@@ -39,7 +39,7 @@ public class Politician implements Serializable {
 	 * @param party
 	 *            the party
 	 */
-	public Politician(final String id, final String firstName,
+	public Politician(final int id, final String firstName,
 			final String lastName, final String constituency, 
 			final String party) {
 		this.id = id;
@@ -90,7 +90,7 @@ public class Politician implements Serializable {
 	 * 
 	 * @return the id
 	 */
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 	

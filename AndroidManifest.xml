@@ -18,9 +18,10 @@
         >
         
         <!-- MainActivity -->
+         <!-- android:name="com.rmp.rmpclient.activities.MainActivity"-->
         <activity
             android:label="@string/app_name"
-            android:name="com.rmp.rmpclient.activities.MainActivity" >
+            android:name="com.rmp.rmpclient.activities.ScreenSlidePagerActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

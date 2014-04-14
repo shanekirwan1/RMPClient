@@ -11,12 +11,12 @@ public class ImageTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		testImage = new Image("testId");
+		testImage = new Image(1);
 	}
 
 	@Test
 	public void testGetImage() {
-		assertEquals("http://rmpserver.herokuapp.com/portrait/testId", testImage.getImageUrl());
+		assertEquals("http://rmpserver.herokuapp.com/portrait/1", testImage.getImageUrl());
 	}
 
 }

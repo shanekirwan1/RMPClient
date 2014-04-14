@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_selector"
@@ -10,19 +9,21 @@
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:paddingRight="10dip" />
+        android:background="@drawable/ic_launcher"
+        android:layout_centerInParent="true" 
+        android:contentDescription="@string/firstname"/>
 
     <TextView
         android:id="@+id/firstName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/image"
+        android:layout_below="@+id/image"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
         android:textColor="#43bd00"
         android:textSize="16sp"
+        android:text="@string/firstname"
         android:textStyle="bold" />
 
     <!-- lastName label -->
@@ -32,8 +33,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/firstName"
-        android:layout_toRightOf="@+id/image"
         android:paddingBottom="2dip"
+        android:text="@string/lastname"
         android:textColor="#acacac" />
 
     <!-- party number label -->
@@ -43,9 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lastName"
-        android:layout_toRightOf="@+id/image"
         android:gravity="left"
-        android:text="Party: "
+        android:text="@string/party"
         android:textColor="#5d5d5d"
         android:textStyle="bold" />
 
@@ -54,8 +54,25 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/party"
-        android:layout_toRightOf="@+id/image"
         android:paddingBottom="2dip"
-        android:textColor="#acacac" />
+        android:textColor="#acacac"
+        android:text="@string/id" />
+
+    <Button
+        android:id="@+id/shake"
+        android:layout_below="@id/id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Shake"
+        />
+    
+     <Button
+         android:id="@+id/tap"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_below="@id/id"
+         android:text="Tap" 
+         />  
 
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package com.rmp.rmpclient.politician;
 
+import android.content.Context;
+
 /**
  * This class is a holder for the politician image to be displayed.
  * 
@@ -19,7 +21,7 @@ public class Image {
 	 * 
 	 * @param id the politician's ID
 	 */
-	public Image(final String id) {
+	public Image(final int id) {
 		// just append on the id to the static url
 		this.imageUrl = STATIC_URL + id;
 	}

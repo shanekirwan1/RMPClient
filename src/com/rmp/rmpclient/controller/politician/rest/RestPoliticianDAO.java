@@ -2,8 +2,11 @@ package com.rmp.rmpclient.controller.politician.rest;
 
 import java.util.Collection;
 
+import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
+import retrofit.http.POST;
+import retrofit.http.Path;
 
 import com.rmp.rmpclient.politician.Politician;
 
@@ -31,9 +34,13 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	}
 
 	@Override
-	@GET("/api/politicians")
 	public Collection<Politician> getAllPoliticians() {
 		return rest.getAllPoliticians();
+	}
+	
+	@Override
+	public void rate(@Path("id") int politicianId,  @Path("rating") int rating, Callback<String> cb){
+		rest.rate(politicianId, rating, cb);
 	}
 
 }
