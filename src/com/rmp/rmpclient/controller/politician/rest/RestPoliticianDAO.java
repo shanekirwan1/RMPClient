@@ -45,8 +45,8 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	}
 
 	@Override
-	@POST("/api/politician/rate/{rating}")
-	public void rate(@Path("rating") Map<String, Object> politicianRating, Callback<String> cb) {
+	@POST("/api/politician/rate/")
+	public void rate(Map<String, Object> politicianRating, Callback<String> cb) {
 		rest.rate(politicianRating, cb);
 		
 	}
