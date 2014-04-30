@@ -58,6 +58,7 @@
         android:textColor="#acacac"
         android:text="@string/id" />
 
+      
     <Button
         android:id="@+id/shake"
         android:layout_below="@id/id"
@@ -73,6 +74,16 @@
          android:layout_alignParentRight="true"
          android:layout_below="@id/id"
          android:text="Tap" 
-         />  
-
+         /> 
+         
+     <TextView
+         android:id="@+id/score"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@id/shake"
+         android:paddingBottom="2dip"
+         android:textColor="#acacac"
+         android:text="Score" 
+         />
+     
 </RelativeLayout>

@@ -25,6 +25,7 @@ import retrofit.client.Response;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,9 +51,12 @@ import com.squareup.picasso.Picasso;
  */
 public class ScreenSlidePageFragment extends Fragment implements OnClickListener{
 
+	private static final String SHANE_TAG = "SHANE_TAG";
 	private Activity activity;
 	private PoliticianProfile politicianProfile;
-
+	
+	private ViewGroup vi;
+	
 	public ScreenSlidePageFragment() {
 
 	}
@@ -72,7 +76,7 @@ public class ScreenSlidePageFragment extends Fragment implements OnClickListener
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		ViewGroup vi = (ViewGroup) inflater.inflate(R.layout.list_item,
+		vi = (ViewGroup) inflater.inflate(R.layout.list_item,
 				container, false);
 
 		final TextView firstName = (TextView) vi.findViewById(R.id.firstName);
@@ -102,48 +106,41 @@ public class ScreenSlidePageFragment extends Fragment implements OnClickListener
 	}
 
 	@Override
-	public void onClick(View v) {
+	public void onClick(final View v) {
 		 Map<String, Object> politicianRating = new HashMap<String, Object>();
 		 politicianRating.put("politicianId",politicianProfile.getPolitician().getId());
 		 politicianRating.put("timestamp", System.currentTimeMillis());
 		 switch (v.getId()) {
 		 	case R.id.shake: 
+		 		Log.d(SHANE_TAG, "We have a SHAKE");
 		 		politicianRating.put("rating", -1);
-		 		PoliticianDAOFactory
-		 					.getInstance()
-		 					.getPoliticianDAO()
-		 					.rate(politicianRating, new Callback<String>() {
-								
-								@Override
-								public void success(String arg0, Response arg1) {
-									System.out.println(arg0 + " : " + arg1);
-								}
-								
-								@Override
-								public void failure(RetrofitError arg0) {
-									System.err.println(arg0);
-								}
-							});
 		 		break;
 		 	case R.id.tap: 
+		 		Log.d(SHANE_TAG, "We have a TAP");
 		 		politicianRating.put("rating", 1);
-		 		PoliticianDAOFactory
-					.getInstance()
-					.getPoliticianDAO()
-					.rate(politicianRating, new Callback<String>() {
-						
-						@Override
-						public void success(String arg0, Response arg1) {
-							System.out.println(arg0 + " : " + arg1);
-						}
-						
-						@Override
-						public void failure(RetrofitError arg0) {
-							System.err.println(arg0);
-						}
-					});
 		 		break;
 		 	default: break;
+		 	
+		 	
 		 }
+
+		 PoliticianDAOFactory
+			.getInstance()
+			.getPoliticianDAO()
+			.rate(politicianRating, new Callback<String>() {
+				
+				@Override
+				public void success(String receivedScore, Response arg1) {
+			 		Log.d(SHANE_TAG, "We have a success, arg: " + receivedScore);
+					TextView score = (TextView) vi.findViewById(R.id.score);
+					score.setText(receivedScore);
+				}
+				
+				@Override
+				public void failure(RetrofitError e) {
+					Log.d(SHANE_TAG, "We have a failure");
+					Log.e(SHANE_TAG, "Failed to receive callback rating", e);
+				}
+			});
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
+import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
@@ -40,13 +41,8 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	}
 	
 	@Override
-	public void rate(@Path("id") int politicianId,  @Path("rating") int rating, Callback<String> cb){
-		rest.rate(politicianId, rating, cb);
-	}
-
-	@Override
-	@POST("/api/politician/rate/")
-	public void rate(Map<String, Object> politicianRating, Callback<String> cb) {
+	@POST("/api/politician/rate")
+	public void rate(@Body Map<String, Object> politicianRating, Callback<String> cb) {
 		rest.rate(politicianRating, cb);
 		
 	}
