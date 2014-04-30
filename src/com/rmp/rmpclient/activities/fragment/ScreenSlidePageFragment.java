@@ -16,6 +16,11 @@
 
 package com.rmp.rmpclient.activities.fragment;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -25,6 +30,7 @@ import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
 import com.rmp.rmpclient.controller.politician.profile.PoliticianProfile;
 import com.rmp.rmpclient.politician.Politician;
 import com.squareup.picasso.Picasso;
+import com.sun.jmx.snmp.Timestamp;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -101,12 +107,16 @@ public class ScreenSlidePageFragment extends Fragment implements OnClickListener
 
 	@Override
 	public void onClick(View v) {
+		 Map<String, Object> politicianRating = new HashMap<String, Object>();
+		 politicianRating.put("politicianId",politicianProfile.getPolitician().getId());
+		 politicianRating.put("timestamp",new Timestamp(new Date().getTime()));
 		 switch (v.getId()) {
 		 	case R.id.shake: 
+		 		politicianRating.put("rating", -1);
 		 		PoliticianDAOFactory
 		 					.getInstance()
 		 					.getPoliticianDAO()
-		 					.rate(politicianProfile.getPolitician().getId(), 0, new Callback<String>() {
+		 					.rate(politicianRating, new Callback<String>() {
 								
 								@Override
 								public void success(String arg0, Response arg1) {
@@ -119,11 +129,12 @@ public class ScreenSlidePageFragment extends Fragment implements OnClickListener
 								}
 							});
 		 		break;
-		 	case R.id.tap:
+		 	case R.id.tap: 
+		 		politicianRating.put("rating", 1);
 		 		PoliticianDAOFactory
 					.getInstance()
 					.getPoliticianDAO()
-					.rate(politicianProfile.getPolitician().getId(), 1, new Callback<String>() {
+					.rate(politicianRating, new Callback<String>() {
 						
 						@Override
 						public void success(String arg0, Response arg1) {

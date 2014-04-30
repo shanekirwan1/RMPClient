@@ -1,6 +1,7 @@
 package com.rmp.rmpclient.controller.politician.rest;
 
 import java.util.Collection;
+import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -14,7 +15,7 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	
 	private static final RestPoliticianDAO INSTANCE = new RestPoliticianDAO();
 
-	private static final String API_URL = "http://rmpserver.herokuapp.com";
+	private static final String API_URL = "192.168.1.7:9000";
 	private static RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
 	private static RMPRestInterface rest = restAdapter.create(RMPRestInterface.class);
 	
@@ -41,6 +42,13 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	@Override
 	public void rate(@Path("id") int politicianId,  @Path("rating") int rating, Callback<String> cb){
 		rest.rate(politicianId, rating, cb);
+	}
+
+	@Override
+	@POST("/api/politician/rate/{rating}")
+	public void rate(@Path("rating") Map<String, Object> politicianRating, Callback<String> cb) {
+		rest.rate(politicianRating, cb);
+		
 	}
 
 }
