@@ -16,22 +16,12 @@
 
 package com.rmp.rmpclient.activities.fragment;
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-
-import com.rmp.rmpclient.R;
-import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
-import com.rmp.rmpclient.controller.politician.profile.PoliticianProfile;
-import com.rmp.rmpclient.politician.Politician;
-import com.squareup.picasso.Picasso;
-import com.sun.jmx.snmp.Timestamp;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,6 +32,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.rmp.rmpclient.R;
+import com.rmp.rmpclient.controller.politician.dao.PoliticianDAOFactory;
+import com.rmp.rmpclient.controller.politician.profile.PoliticianProfile;
+import com.rmp.rmpclient.politician.Politician;
+import com.squareup.picasso.Picasso;
 
 /**
  * A fragment representing a single step in a wizard. The fragment shows a dummy
@@ -109,7 +105,7 @@ public class ScreenSlidePageFragment extends Fragment implements OnClickListener
 	public void onClick(View v) {
 		 Map<String, Object> politicianRating = new HashMap<String, Object>();
 		 politicianRating.put("politicianId",politicianProfile.getPolitician().getId());
-		 politicianRating.put("timestamp",new Timestamp(new Date().getTime()));
+		 politicianRating.put("timestamp", System.currentTimeMillis());
 		 switch (v.getId()) {
 		 	case R.id.shake: 
 		 		politicianRating.put("rating", -1);

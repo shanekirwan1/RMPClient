@@ -15,7 +15,7 @@ public class RestPoliticianDAO implements RMPRestInterface {
 	
 	private static final RestPoliticianDAO INSTANCE = new RestPoliticianDAO();
 
-	private static final String API_URL = "192.168.1.7:9000";
+	private static final String API_URL = "http://rmpserver.herokuapp.com";
 	private static RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
 	private static RMPRestInterface rest = restAdapter.create(RMPRestInterface.class);
 	
